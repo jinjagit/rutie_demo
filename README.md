@@ -4,9 +4,9 @@ POC - Rust on Rails, using Rutie gem & crate.
 <img width="672" alt="multi" src="https://user-images.githubusercontent.com/3944042/152689049-33f11d88-a265-4969-bba3-fc314e83080e.png">
 <br>
 
-This is a non-dockerized version, created to deploy to Heroku.
-Visit https://rutie-demo-simontharby.herokuapp.com/ for hello_world
-Visit: https://rutie-demo-simontharby.herokuapp.com/arrays/blocked_words for benchmarks
+This is a non-dockerized version, created to deploy to Heroku.  
+Visit https://rutie-demo-simontharby.herokuapp.com/ for hello_world  
+Visit: https://rutie-demo-simontharby.herokuapp.com/arrays/blocked_words for benchmarks  
 
 For dockerized version see [this repo](https://github.com/jinjagit/rutie_on_rails)
 
