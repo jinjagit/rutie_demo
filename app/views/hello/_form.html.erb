@@ -1,0 +1,18 @@
+<%= form_with(model: app_config) do |form| %>
+  <% if app_config.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(app_config.errors.count, "error") %> prohibited this app_config from being saved:</h2>
+
+      <ul>
+        <% app_config.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :rust_enabled %>
+    <%= form.check_box :rust_enabled, onchange: "this.form.submit();" %>
+  </div>
+<% end %>

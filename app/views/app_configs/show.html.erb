@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Rust enabled:</strong>
+  <%= @app_config.rust_enabled %>
+</p>
+
+<%= link_to 'Edit', edit_app_config_path(@app_config) %> |
+<%= link_to 'Back', app_configs_path %>
