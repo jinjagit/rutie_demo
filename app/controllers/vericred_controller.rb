@@ -45,7 +45,7 @@ class VericredController < ApplicationController
     performance_m = ruby_benchmark.total / rust_multi_benchmark.total
 
     if result_ruby == result_rust && result_ruby == result_rust_multi
-      @text = "Sum of 100,000 SecureRandom.hex values\n"\
+      @text = "Sum of 100,000 SecureRandom.hex values\n\n"\
               "Ruby version total time:         #{ruby_benchmark.total.round(6)}\n\n"\
               "Rust single-threaded total time: #{rust_benchmark.total.round(6)}\n"\
               "= #{performance_s.round(2)} times faster than Ruby\n\n"\
