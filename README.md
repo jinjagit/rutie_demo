@@ -7,9 +7,9 @@ POC - Rust on Rails, using Rutie gem & crate.
 This is a non-dockerized version, created to deploy to Heroku.  
 Visit https://rutie-demo-simontharby.herokuapp.com/ for hello_world  
 Visit: https://rutie-demo-simontharby.herokuapp.com/arrays/blocked_words for benchmarks  
-Visit: https://rutie-demo-simontharby.herokuapp.com/vericred_example for Vericred example with objects  
+Visit: https://rutie-demo-simontharby.herokuapp.com/vericred_example for Vericred example with objects (benchmarked)  
   
-For dockerized version see [this repo](https://github.com/jinjagit/rutie_on_rails)
+For dockerized version see [this repo](https://github.com/jinjagit/rutie_on_rails)  
   
 ## To add Rust to a Rails app
 This is already done in this demo repo, but if you want to do it yourself...  
