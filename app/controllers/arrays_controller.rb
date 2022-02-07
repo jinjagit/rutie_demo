@@ -19,31 +19,29 @@ class ArraysController < ApplicationController
 
     words_to_find = get_random_items(blocked_words, 5)
     text_array = create_array_including_supplied_words(10000, words_to_find)
-    found_words = find_blocked_words(text_array, blocked_words)
-    check_ruby = check_array_contains_elements(found_words, words_to_find)
+
+    result_ruby = nil
+    result_rust = nil
+    result_rust_multi = nil
 
     ruby_benchmark = Benchmark.measure {
-      find_blocked_words(text_array, blocked_words)
+      result_ruby = find_blocked_words(text_array, blocked_words)
     }
-
-    found_words = RustLib.find_blocked_words(text_array, blocked_words)
-    check_rust = check_array_contains_elements(found_words, words_to_find)
 
     rust_benchmark = Benchmark.measure {
-      RustLib.find_blocked_words(text_array, blocked_words)
+      result_rust = RustLib.find_blocked_words(text_array, blocked_words)
     }
 
-    found_words = RustLib.find_blocked_words_multi(text_array, blocked_words)
-    check_rust_multi = check_array_contains_elements(found_words, words_to_find)
-
     rust_multi_benchmark = Benchmark.measure {
-      RustLib.find_blocked_words_multi(text_array, blocked_words)
+      result_rust_multi = RustLib.find_blocked_words_multi(text_array, blocked_words)
     }
 
     performance_s = ruby_benchmark.total / rust_benchmark.total
     performance_m = ruby_benchmark.total / rust_multi_benchmark.total
 
-    if check_ruby && check_rust && check_rust_multi
+    check_ruby = check_array_contains_elements(result_ruby, words_to_find)
+
+    if check_ruby && (result_ruby == result_rust && result_ruby == result_rust_multi)
       @text = "Array of #{text_array.length} strings compared to array of #{blocked_words.length} strings\n"\
               "= #{text_array.length * blocked_words.length} comparisons\n\n"\
               "Ruby version total time:         #{ruby_benchmark.total.round(6)}\n\n"\
@@ -53,9 +51,10 @@ class ArraysController < ApplicationController
               "= #{performance_m.round(2)} times faster than Ruby"\
     else
       @text = "Oops! Something went wrong\n\n"\
-              "passed check_ruby? #{check_ruby}\n"\
-              "passed check_rust? #{check_rust}\n"\
-              "passed check_rust? #{check_rust_multi}"
+              "check_ruby: #{check_ruby}\n"\
+              "result_ruby: #{result_ruby}\n"\
+              "result_rust: #{result_rust}\n"\
+              "result_rust_multi: #{result_rust_multi}"
     end
   end
 
